@@ -1,0 +1,32 @@
+[project]
+name = "onward"
+version = "0.1.0"
+description = "\"七転び八起き\" - fall seven times, stand up eight"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2.11.7",
+    "pydantic-settings>=2.10.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.basedpyright]
+executionEnvironments = [
+    { root = "./tests", reportUnusedFunction = false}
+]
+reportImportCycles=false
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "mypy>=1.16.1"
+]
+
+[project.scripts]
+onward = "onward.__main__:cli"
+
+[tool.onward]
+script = "main"
